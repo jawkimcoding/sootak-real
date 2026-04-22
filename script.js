@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusMessage = document.getElementById('statusMessage');
     
     // Admin Setting for Google App Script URL
-    // To configure, user can press Shift+A on the keyboard or you can just replace the variable below.
     let scriptUrl = localStorage.getItem('kpcScriptUrl') || "https://script.google.com/macros/s/AKfycbz_REPLACE_WITH_YOUR_WEB_APP_URL/exec";
 
     // Toggle Experience History
