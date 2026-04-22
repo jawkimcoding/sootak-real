@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국생산성본부 맞춤형 교육 문의 양식</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-mesh"></div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fa-solid fa-building-columns"></i>
+                <span>한국생산성본부 (KPC)</span>
+            </div>
+            <h1>맞춤형 교육 문의 및 신청</h1>
+            <p>귀사의 조직역량 강화를 위한 최적의 맞춤형 교육을 제안해 드립니다.<br>아래 양식을 작성해 주시면 검토 후 신속히 연락드리겠습니다.</p>
+        </header>
+
+        <form id="kpcForm" class="glass-form">
+            
+            <!-- 1. 기본 정보 -->
+            <section class="form-section">
+                <h2><i class="fa-solid fa-users"></i> 1. 교육 대상 정보</h2>
+                
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label for="department">부서명 <span class="required">*</span></label>
+                        <input type="text" id="department" name="부서" required placeholder="예: 인사팀, 영업본부">
+                    </div>
+                    <div class="form-group half">
+                        <label for="ageGroup">주요 연령대 <span class="required">*</span></label>
+                        <input type="text" id="ageGroup" name="연령대" required placeholder="예: 30대 중반, 20~40대">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label for="position">주요 직급 <span class="required">*</span></label>
+                        <input type="text" id="position" name="직급" required placeholder="예: 사원~대리, 팀장급">
+                    </div>
+                    <div class="form-group half">
+                        <label for="attendees">예상 수강 인원 <span class="required">*</span></label>
+                        <input type="number" id="attendees" name="예상 수강 인원" required placeholder="예: 20" min="1">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="mainTasks">부서 주 업무</label>
+                    <textarea id="mainTasks" name="부서 주 업무" rows="2" placeholder="대상 부서의 주요 업무 내용을 간단히 적어주세요"></textarea>
+                </div>
+            </section>
+
+            <!-- 2. 교육 목적 및 예산 -->
+            <section class="form-section">
+                <h2><i class="fa-solid fa-bullseye"></i> 2. 교육 목적 및 예산</h2>
+                
+                <div class="form-group">
+                    <label for="purpose">구체적인 교육 목적 <span class="required">*</span></label>
+                    <p class="help-text">생산성본부 공개교육 중 유사한 교육명을 기재하셔도 됩니다.</p>
+                    <textarea id="purpose" name="구체적인 교육 목적" rows="3" required placeholder="교육을 통해 향상시키고자 하는 능력, 역량 등을 상세히 작성해주세요"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">예상 예산</label>
+                    <input type="text" id="budget" name="예상 예산" placeholder="예: 500만원 내외 (미정인 경우 '미정'으로 기입)">
+                </div>
+            </section>
+
+            <!-- 3. 교육 진행 방법 -->
+            <section class="form-section">
+                <h2><i class="fa-solid fa-calendar-check"></i> 3. 희망 교육 진행 방법</h2>
+                
+                <div class="form-row">
+                    <div class="form-group third">
+                        <label for="period">교육 희망 일정 (기간)</label>
+                        <input type="text" id="period" name="교육 기간" placeholder="예: 2026년 5월 중">
+                    </div>
+                    <div class="form-group third">
+                        <label for="days">교육 일수</label>
+                        <input type="number" id="days" name="교육 일수" placeholder="예: 2" min="1">
+                    </div>
+                    <div class="form-group third">
+                        <label for="hours">일/시간</label>
+                        <input type="number" id="hours" name="일시간" placeholder="예: 8" step="0.5" min="0.5">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label>강의 장소 <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="강의 장소" value="대면" required>
+                                <span class="radio-custom"></span> 대면 (오프라인)
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="강의 장소" value="비대면">
+                                <span class="radio-custom"></span> 비대면 (온라인)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group half">
+                        <label>유사 교육 경험 여부 <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="유사 교육 경험" value="Y" required onchange="toggleExperienceHistory(true)">
+                                <span class="radio-custom"></span> 있음 (Y)
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="유사 교육 경험" value="N" onchange="toggleExperienceHistory(false)">
+                                <span class="radio-custom"></span> 없음 (N)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="experienceHistoryGroup" style="display: none;">
+                    <label for="experienceHistory">유사 교육 경험 이력</label>
+                    <textarea id="experienceHistory" name="유사 교육 경험 이력" rows="2" placeholder="과거 진행했던 유사 교육의 주제나 기관 등을 적어주세요"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>교재 인쇄 진행 방법 <span class="required">*</span></label>
+                    <div class="radio-group vertical">
+                        <label class="radio-label">
+                            <input type="radio" name="교재 인쇄" value="귀사 진행" required>
+                            <span class="radio-custom"></span> 자체 진행 (고객사 직접 인쇄)
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="교재 인쇄" value="한국생산성본부를 통해 진행">
+                            <span class="radio-custom"></span> 한국생산성본부를 통해 진행
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. 기타 -->
+            <section class="form-section">
+                <h2><i class="fa-solid fa-comment-dots"></i> 4. 기타 문의사항</h2>
+                
+                <div class="form-group">
+                    <label for="otherQueries">기타 연락처 및 문의사항</label>
+                    <textarea id="otherQueries" name="기타 문의사항" rows="3" placeholder="담당자 연락처, 이메일 또는 추가 문의사항을 남겨주시면 신속히 답변 드리겠습니다."></textarea>
+                </div>
+            </section>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <span>문의 접수하기</span>
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+            <div id="statusMessage" class="status-message"></div>
+        </form>
+        
+        <footer class="footer">
+            <p>한국생산성본부 김재욱 드림 | 교육문의를 기다리겠습니다!</p>
+        </footer>
+    </div>
+
+    <!-- Instructions Modal for Admin -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>🛠️ 관리자 설정 (Apps Script 연결)</h2>
+            <p>구글 시트에 데이터를 저장하려면 아래 URL을 입력해야 합니다.</p>
+            <p><strong>apps script Web App URL:</strong></p>
+            <input type="text" id="scriptUrlInput" placeholder="https://script.google.com/macros/s/.../exec" style="width: 100%; padding: 10px; margin-bottom: 20px;">
+            <button id="saveScriptUrlBtn" class="submit-btn" style="width: auto; padding: 10px 20px;">저장</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
