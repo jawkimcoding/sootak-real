@@ -12,9 +12,8 @@
     <div class="dashboard-container">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo" style="gap:5px; border-bottom: 2px solid var(--border-color); padding-bottom: 25px; margin-bottom: 35px;">
-                <span style="font-family:'Arial Black', Impact, sans-serif; font-size:32px; color:var(--primary-color); letter-spacing:-2px; text-transform:lowercase;">kpc</span>
-                <span style="font-size:20px; font-weight:800; color:#333; margin-top:6px; margin-left:4px;">한국생산성본부</span>
+            <div class="logo">
+                <img src="kpc_logo.png" alt="한국생산성본부 KPC 로고" style="width:180px; height:auto;">
             </div>
             <ul class="nav-links step-list">
                 <li class="active" data-step="1"><i class="fa-solid fa-user-tie"></i> <span>1. 신청자 및 대상</span></li>
@@ -192,6 +191,9 @@
             <button onclick="closeModal()" class="btn btn-primary">확인 및 닫기</button>
         </div>
     </div>
+
+    <!-- Hidden iframe for form submission -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
     <!-- Toast Notification -->
     <div id="toast" class="toast"><i class="fa-solid fa-circle-exclamation"></i> 필수 항목을 모두 입력해주세요.</div>

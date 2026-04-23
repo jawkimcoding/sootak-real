@@ -389,3 +389,14 @@ textarea:focus {
     color: #f87171;
     font-size: 1.1rem;
 }
+
+/* Input Error State */
+.input-error {
+    border-color: #ef4444 !important;
+    background-color: #fef2f2 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+.input-error::placeholder {
+    color: #fca5a5 !important;
+}
