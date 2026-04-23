@@ -35,7 +35,7 @@ body {
     display: flex;
     width: 100%;
     max-width: 1200px;
-    height: 85vh;
+    height: 92vh; /* Increased from 85vh to provide more vertical space */
     background: var(--card-bg);
     border-radius: 16px;
     overflow: hidden;
@@ -45,12 +45,11 @@ body {
 
 /* Sidebar */
 .sidebar {
-    width: 280px;
+    width: 260px; /* Reduced from 280px */
     background: #fafafa;
     border-right: 1px solid var(--border-color);
-    padding: 30px 20px;
-    display: flex;
-    flex-direction: column;
+    padding: 20px 15px; /* Reduced padding from 30px 20px */
+    display: flex; flex-direction: column;
 }
 
 .logo {
@@ -150,8 +149,8 @@ header h1 {
 }
 
 .form-step h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+    font-size: 1.3rem; /* Reduced from 1.5rem */
+    margin-bottom: 12px; /* Reduced from 20px */
     font-weight: 700;
     color: var(--text-main);
     display: flex;
@@ -162,8 +161,8 @@ header h1 {
 .form-step h2::before {
     content: "";
     display: inline-block;
-    width: 5px;
-    height: 24px;
+    width: 4px;
+    height: 20px; /* Reduced from 24px */
     background-color: var(--accent);
     border-radius: 4px;
 }
