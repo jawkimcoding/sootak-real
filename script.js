@@ -1,4 +1,4 @@
-const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE"; // 반드시 Apps Script 연동 후 변경해주세요!
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz8Fyyz7bsy7SNmGZXXQgqokIEH0cxZLdW2KEWPJ0T29_XjGpgQ5osw1J7XtT694Lc_AQ/exec";
 
 let currentStep = 1;
 const totalSteps = 7;
