@@ -1,108 +1,118 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('kpcForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const statusMessage = document.getElementById('statusMessage');
+const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE"; // 반드시 Apps Script 연동 후 변경해주세요!
+
+let currentStep = 1;
+const totalSteps = 7;
+
+const form = document.getElementById('applicationForm');
+const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn');
+const submitBtn = document.getElementById('submitBtn');
+const steps = document.querySelectorAll('.form-step');
+const navItems = document.querySelectorAll('.step-list li');
+
+function updateFormSteps() {
+    // Hide all steps
+    steps.forEach(step => step.classList.remove('active'));
     
-    // Admin Setting for Google App Script URL
-    let scriptUrl = localStorage.getItem('kpcScriptUrl') || "https://script.google.com/macros/s/AKfycbz_REPLACE_WITH_YOUR_WEB_APP_URL/exec";
+    // Show current step
+    document.getElementById(`step${currentStep}`).classList.add('active');
 
-    // Toggle Experience History
-    window.toggleExperienceHistory = function(show) {
-        const group = document.getElementById('experienceHistoryGroup');
-        const input = document.getElementById('experienceHistory');
-        if(show) {
-            group.style.display = 'block';
-            input.setAttribute('required', 'required');
-            group.style.animation = 'fadeIn 0.3s ease';
+    // Update navigation sidebar
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (parseInt(item.dataset.step) < currentStep) {
+            item.classList.add('completed');
+            item.querySelector('i').classList.replace('fa-regular', 'fa-solid'); // Example icon state change
         } else {
-            group.style.display = 'none';
-            input.removeAttribute('required');
-            input.value = '';
-        }
-    };
-
-    // Form Submit Handler
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        if(scriptUrl.includes('REPLACE_WITH_YOUR_WEB_APP_URL')) {
-            showStatus('관리자 설정오류: 구글 Apps Script Web App URL이 설정되지 않았습니다. (Shift+A를 눌러 설정해주세요)', 'error');
-            return;
-        }
-
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        
-        // Add timestamp
-        data['제출일시'] = new Date().toLocaleString('ko-KR');
-
-        try {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> <span>제출 중...</span>';
-            statusMessage.style.display = 'none';
-
-            // Google Apps Script usually requires a slightly different approach for CORS
-            // Standard approach using fetch with 'no-cors' or sending as form data
-            const searchParams = new URLSearchParams();
-            for (const key in data) {
-                searchParams.append(key, data[key]);
-            }
-
-            // Using fetch with no-cors because Google Scripts Web Apps redirect to HTML and causes CORS blocks in browser unless configured carefully.
-            // A common workaround is a POST with Content-Type: application/x-www-form-urlencoded
-            await fetch(scriptUrl, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: searchParams.toString()
-            });
-
-            // With no-cors we can't read the exact response, so we assume success if no network error
-            showStatus('성공적으로 문의가 접수되었습니다. 확인 후 신속히 연락드리겠습니다.', 'success');
-            form.reset();
-            window.toggleExperienceHistory(false);
-            
-        } catch (error) {
-            console.error('Error!', error.message);
-            showStatus('서버 전송 중 오류가 발생했습니다. 다시 시도해주시거나 전화로 문의바랍니다.', 'error');
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = '<span>문의 접수하기</span> <i class="fa-solid fa-paper-plane"></i>';
+            item.classList.remove('completed');
         }
     });
+    document.querySelector(`.step-list li[data-step="${currentStep}"]`).classList.add('active');
 
-    function showStatus(text, type) {
-        statusMessage.textContent = text;
-        statusMessage.className = `status-message status-${type}`;
+    // Controls display
+    if (currentStep === 1) {
+        prevBtn.style.display = 'none';
+    } else {
+        prevBtn.style.display = 'flex';
     }
 
-    // --- Admin Configuration Modal ---
-    const modal = document.getElementById('adminModal');
-    const closeBtn = document.querySelector('.close');
-    const saveBtn = document.getElementById('saveScriptUrlBtn');
-    const urlInput = document.getElementById('scriptUrlInput');
+    if (currentStep === totalSteps) {
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'flex';
+    } else {
+        nextBtn.style.display = 'flex';
+        submitBtn.style.display = 'none';
+    }
+}
 
-    document.addEventListener('keydown', (e) => {
-        if (e.shiftKey && e.key.toLowerCase() === 'a') {
-            modal.style.display = 'block';
-            urlInput.value = localStorage.getItem('kpcScriptUrl') || '';
+nextBtn.addEventListener('click', () => {
+    // Basic Custom Validation for required fields
+    const currentStepEl = document.getElementById(`step${currentStep}`);
+    const requiredInputs = currentStepEl.querySelectorAll('[required]');
+    let isValid = true;
+    
+    requiredInputs.forEach(input => {
+        if (!input.value.trim()) {
+            input.style.borderColor = '#ef4444'; // Red border on error
+            isValid = false;
+        } else {
+            input.style.borderColor = 'var(--border-color)';
         }
     });
 
-    closeBtn.onclick = () => modal.style.display = 'none';
-    window.onclick = (e) => {
-        if (e.target === modal) modal.style.display = 'none';
-    };
-
-    saveBtn.onclick = () => {
-        const newUrl = urlInput.value.trim();
-        if(newUrl) {
-            localStorage.setItem('kpcScriptUrl', newUrl);
-            scriptUrl = newUrl;
-            alert('URL이 저장되었습니다.');
-            modal.style.display = 'none';
-        }
-    };
+    if (isValid && currentStep < totalSteps) {
+        currentStep++;
+        updateFormSteps();
+    } else if (!isValid) {
+        // Optional shake animation or simple alert
+        alert('필수 항목을 모두 입력해주세요.');
+    }
 });
+
+prevBtn.addEventListener('click', () => {
+    if (currentStep > 1) {
+        currentStep--;
+        updateFormSteps();
+    }
+});
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Update button state visually
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 전송 중...';
+    submitBtn.disabled = true;
+
+    // Collect all data
+    const formData = new FormData(form);
+
+    // Google Apps Script Post request setup
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(formData).toString()
+    })
+    .then(response => {
+        // Success
+        document.getElementById('successModal').style.display = 'flex';
+        form.reset(); // Reset form values
+        currentStep = 1;
+        updateFormSteps();
+        
+        // Reset button
+        submitBtn.innerHTML = '<i class="fa-solid fa-upload"></i> 양식 제출하기';
+        submitBtn.disabled = false;
+    })
+    .catch(error => {
+        console.error('Submission error:', error);
+        alert('데이터 전송 중 오류가 발생했습니다. 나중에 다시 시도하거나 관리자에게 문의해주세요.');
+        submitBtn.innerHTML = '<i class="fa-solid fa-upload"></i> 양식 제출하기';
+        submitBtn.disabled = false;
+    });
+});
+
+function closeModal() {
+    document.getElementById('successModal').style.display = 'none';
+}
