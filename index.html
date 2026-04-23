@@ -3,201 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한국생산성본부 맞춤형 교육 신청 대시보드</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>한국생산성본부(KPC) - 가치를 창조하는 미래 인재 육성</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="dashboard-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
             <div class="logo">
-                <img src="kpc_logo_color.svg" alt="한국생산성본부 KPC 로고" style="width:200px; height:auto;">
+                <a href="index.html">
+                    <img src="kpc_logo_color.svg" alt="KPC 로고" height="40">
+                </a>
             </div>
-            <ul class="nav-links step-list">
-                <li class="active" data-step="1"><i class="fa-solid fa-user-tie"></i> <span>1. 신청자 및 대상</span></li>
-                <li data-step="2"><i class="fa-solid fa-bullseye"></i> <span>2. 교육목적</span></li>
-                <li data-step="3"><i class="fa-solid fa-wallet"></i> <span>3. 예산 계획</span></li>
-                <li data-step="4"><i class="fa-solid fa-chalkboard-user"></i> <span>4. 진행 방법</span></li>
-                <li data-step="5"><i class="fa-solid fa-clock-rotate-left"></i> <span>5. 유사 경험</span></li>
-                <li data-step="6"><i class="fa-solid fa-book"></i> <span>6. 교재 준비</span></li>
-                <li data-step="7"><i class="fa-solid fa-calendar-check"></i> <span>7. 희망 일정</span></li>
-            </ul>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <header>
-                <div>
-                    <h1>맞춤형 교육 신청서</h1>
-                </div>
-            </header>
-
-            <form id="applicationForm" class="form-container">
-                
-                <!-- Step 1 -->
-                <div class="form-step active" id="step1">
-                    <h2>1. 신청자 및 교육대상 정보</h2>
-                    
-                    <div class="section-divider">신청자 정보</div>
-                    <div class="input-grid">
-                        <div class="input-group">
-                            <label for="applicantName">성함</label>
-                            <input type="text" id="applicantName" name="applicantName" placeholder="예: 홍길동" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="applicantEmail">이메일</label>
-                            <input type="email" id="applicantEmail" name="applicantEmail" placeholder="예: email@kpc.or.kr" required>
-                        </div>
-                        <div class="input-group full-width">
-                            <label for="applicantPhone">전화번호</label>
-                            <input type="text" id="applicantPhone" name="applicantPhone" placeholder="예: 010-1234-5678" required>
-                        </div>
-                    </div>
-                    
-                    <div class="section-divider">교육대상 정보</div>
-                    <div class="input-grid">
-                        <div class="input-group">
-                            <label for="companyName">회사명</label>
-                            <input type="text" id="companyName" name="companyName" placeholder="예: 한국기업" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="department">부서</label>
-                            <input type="text" id="department" name="department" placeholder="예: 인사팀" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="ageGroup">주요 연령대</label>
-                            <input type="text" id="ageGroup" name="ageGroup" placeholder="예: 30대 중반">
-                        </div>
-                        <div class="input-group">
-                            <label for="position">직급</label>
-                            <input type="text" id="position" name="position" placeholder="예: 대리~과장급">
-                        </div>
-                        <div class="input-group">
-                            <label for="attendeeCount">예상 수강 인원</label>
-                            <input type="number" id="attendeeCount" name="attendeeCount" placeholder="예: 20">
-                        </div>
-                        <div class="input-group">
-                            <label for="mainTask">부서 주 업무</label>
-                            <input type="text" id="mainTask" name="mainTask" placeholder="예: 직원 교육 및 성과 관리">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="form-step" id="step2">
-                    <h2>2. 구체적인 교육 목적</h2>
-                    <p class="subtitle">생산성본부 공개교육 중 유사한 교육을 기재하셔도 좋습니다.</p>
-                    <div class="input-group full-width">
-                        <label for="trainingPurpose">향상시키고자 하는 능력, 역량 혹은 교육 목적</label>
-                        <textarea id="trainingPurpose" name="trainingPurpose" rows="5" placeholder="어떤 역량을 향상시키고 싶으신가요?" required></textarea>
-                    </div>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="form-step" id="step3">
-                    <h2>3. 예상 예산</h2>
-                    <div class="input-group full-width">
-                        <label for="budget">예상하고 계신 예산 규모</label>
-                        <input type="text" id="budget" name="budget" placeholder="예: 500만원 내외">
-                    </div>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="form-step" id="step4">
-                    <h2>4. 희망 교육 진행 방법</h2>
-                    <div class="input-grid">
-                        <div class="input-group">
-                            <label for="trainingPeriod">총 교육 기간</label>
-                            <input type="text" id="trainingPeriod" name="trainingPeriod" placeholder="예: 1개월, 3개월">
-                        </div>
-                        <div class="input-group">
-                            <label for="trainingDaysHours">교육 일수 및 시간</label>
-                            <input type="text" id="trainingDaysHours" name="trainingDaysHours" placeholder="예: 주 2회, 회당 3시간">
-                        </div>
-                        <div class="input-group full-width">
-                            <label for="trainingLocation">강의 장소</label>
-                            <input type="text" id="trainingLocation" name="trainingLocation" placeholder="예: KPC 본부 강의장 또는 자사 회의실">
-                        </div>
-                        <div class="input-group full-width">
-                            <label>희망 교육 형태 (선택)</label>
-                            <div class="radio-group">
-                                <label class="radio-card"><input type="radio" name="trainingType" value="대면 교육" checked> 대면</label>
-                                <label class="radio-card"><input type="radio" name="trainingType" value="비대면 교육"> 비대면</label>
-                                <label class="radio-card"><input type="radio" name="trainingType" value="혼합(블렌디드)"> 혼합 형태</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 5 -->
-                <div class="form-step" id="step5">
-                    <h2>5. 유사 교육 진행 여부</h2>
-                    <div class="input-group full-width">
-                        <label>과거 유사 교육 진행 경험</label>
-                        <div class="radio-group" style="margin-bottom: 20px;">
-                            <label class="radio-card"><input type="radio" name="pastExperience" value="Y" onclick="document.getElementById('pastExpDetails').style.display='flex'"> 있음 (Y)</label>
-                            <label class="radio-card"><input type="radio" name="pastExperience" value="N" onclick="document.getElementById('pastExpDetails').style.display='none'" checked> 없음 (N)</label>
-                        </div>
-                    </div>
-                    <div class="input-group full-width" id="pastExpDetails" style="display:none;">
-                        <label for="pastExperienceDetails">진행하셨던 교육 이력 (상세 시 기재)</label>
-                        <textarea id="pastExperienceDetails" name="pastExperienceDetails" rows="4" placeholder="어떤 교육을 진행하셨는지 간단히 남겨주세요."></textarea>
-                    </div>
-                </div>
-
-                <!-- Step 6 -->
-                <div class="form-step" id="step6">
-                    <h2>6. 교재 인쇄 옵션</h2>
-                    <div class="input-group full-width">
-                        <label>교재 준비 방식</label>
-                        <div class="radio-group">
-                            <label class="radio-card"><input type="radio" name="bookPrinting" value="귀사 직접 진행" checked> 귀사 직접 진행</label>
-                            <label class="radio-card"><input type="radio" name="bookPrinting" value="한국생산성본부 대행"> 한국생산성본부 대행</label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 7 -->
-                <div class="form-step" id="step7">
-                    <h2>7. 희망 일정 및 기타 사항</h2>
-                    <div class="input-group full-width">
-                        <label for="desiredSchedule">시작 희망 일정</label>
-                        <input type="text" id="desiredSchedule" name="desiredSchedule" placeholder="예: 11월 셋째 주">
-                    </div>
-                    <div class="input-group full-width" style="margin-top:20px;">
-                        <label for="otherInquiries">기타 문의 / 전하실 말씀</label>
-                        <textarea id="otherInquiries" name="otherInquiries" rows="4" placeholder="자유롭게 기재해주세요."></textarea>
-                    </div>
-                </div>
-
-                <!-- Navigation Buttons -->
-                <div class="form-actions">
-                    <button type="button" id="prevBtn" class="btn btn-secondary" style="display:none;">이전 항목</button>
-                    <button type="button" id="nextBtn" class="btn btn-primary">다음 단계 <i class="fa-solid fa-arrow-right"></i></button>
-                    <button type="submit" id="submitBtn" class="btn btn-primary" style="display:none;"><i class="fa-solid fa-upload"></i> 양식 제출하기</button>
-                </div>
-            </form>
-        </main>
-    </div>
-    
-    <!-- Success Modal -->
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <i class="fa-solid fa-circle-check modal-icon"></i>
-            <h2>데이터가 전송되었습니다!</h2>
-            <p>스프레드시트에 담당자 정보가 업데이트 되었습니다.<br/>확인 후 빠르게 회신 드리겠습니다.</p>
-            <button onclick="closeModal()" class="btn btn-primary">확인 및 닫기</button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">KPC 소개</a></li>
+                    <li><a href="#">공개교육</a></li>
+                    <li><a href="#">맞춤교육</a></li>
+                    <li><a href="#">컨설팅</a></li>
+                    <li><a href="#">지수/자격</a></li>
+                </ul>
+            </nav>
+            <div class="top-utils">
+                <a href="#" class="util-link">로그인</a>
+                <a href="#" class="util-link">회원가입</a>
+                <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <!-- Hidden iframe for form submission -->
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    <!-- Hero Section -->
+    <section class="hero-section" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('hero_bg.png');">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="badge">Future Talent Excellence</span>
+                <h1>생산성 향상을 통한<br>국가 경제 발전의 파트너, KPC</h1>
+                <p>한국생산성본부는 맞춤형 교육 및 컨설팅을 통해 기업과 조직의 혁신을 지원합니다.</p>
+                
+                <div class="hero-actions">
+                    <a href="form.html" class="btn btn-primary main-cta">
+                        <div class="btn-text">
+                            <strong>맞춤교육 문의</strong>
+                            <span>솔루션이 필요한 기업을 위한 맞춤 신청</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                    <a href="https://www.kpc.or.kr/edu" target="_blank" class="btn btn-secondary main-cta">
+                        <div class="btn-text">
+                            <strong>공개교육 신청</strong>
+                            <span>개인 및 조직을 위한 체계적인 교육 프로그램</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="toast"><i class="fa-solid fa-circle-exclamation"></i> 필수 항목을 모두 입력해주세요.</div>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-container">
+            <div class="feature-card">
+                <div class="icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                <h3>최고의 강사진</h3>
+                <p>각 분야 최고의 전문가들이 실무 중심의 교육을 제공합니다.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>실질적인 성과</h3>
+                <p>단순 교육을 넘어 조직의 성과 향상에 집중합니다.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon"><i class="fa-solid fa-network-wired"></i></div>
+                <h3>방대한 네트워크</h3>
+                <p>공공과 민간의 수많은 파트너십을 통한 통찰력을 제공합니다.</p>
+            </div>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <img src="kpc_logo_w.svg" alt="KPC 로고 화이트" height="30" style="margin-bottom: 20px; filter: brightness(0.7);">
+                <p>(03170) 서울특별시 종로구 새문안로 5가길 32 한국생산성본부빌딩</p>
+                <p>대표전화 : 02-724-1114 | FAX : 02-724-1110</p>
+                <p class="copyright">Copyright &copy; KPC. All Rights Reserved.</p>
+            </div>
+            <div class="footer-links">
+                <h4>교육 카테고리</h4>
+                <ul>
+                    <li><a href="#">리더십/경영</a></li>
+                    <li><a href="#">직무역량</a></li>
+                    <li><a href="#">DX/디지털전환</a></li>
+                    <li><a href="#">생산성/혁신</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
