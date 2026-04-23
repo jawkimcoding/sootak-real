@@ -65,9 +65,18 @@ nextBtn.addEventListener('click', () => {
         updateFormSteps();
     } else if (!isValid) {
         // Optional shake animation or simple alert
-        alert('필수 항목을 모두 입력해주세요.');
+        showToast('필수 항목을 모두 입력해주세요.');
     }
 });
+
+function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> ${msg}`;
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
 
 prevBtn.addEventListener('click', () => {
     if (currentStep > 1) {
