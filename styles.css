@@ -1,13 +1,13 @@
 :root {
-    --primary-color: #3b82f6; /* Modern Blue */
-    --primary-hover: #2563eb;
-    --bg-color: #0f172a; /* Slate 900 */
-    --card-bg: #1e293b; /* Slate 800 */
+    --primary-color: #004F9F; /* KPC Blue */
+    --primary-hover: #003b7a;
+    --bg-color: #0c1524; /* Deep Navy Slate */
+    --card-bg: #111e33; /* Dark Navy Card */
     --text-main: #f8fafc; /* Slate 50 */
     --text-muted: #94a3b8; /* Slate 400 */
-    --border-color: #334155; /* Slate 700 */
-    --accent: #10b981; /* Emerald 500 */
-    --input-bg: #0f172a;
+    --border-color: #213554; /* Navy Border */
+    --accent: #E3000F; /* KPC Red Accent */
+    --input-bg: #0c1524;
 }
 
 * {
