@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>한국생산성본부 맞춤형 교육 신청 대시보드</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -13,9 +13,9 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100" height="100" rx="20" fill="var(--primary-color)"/>
-                    <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="45" font-weight="900" font-family="Arial">KPC</text>
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" rx="15" fill="var(--primary-color)"/>
+                    <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="38" font-weight="900" font-family="Arial">KPC</text>
                 </svg>
                 <span>한국생산성본부</span>
             </div>
@@ -43,8 +43,8 @@
                 <!-- Step 1 -->
                 <div class="form-step active" id="step1">
                     <h2>1. 신청자 및 교육대상 정보</h2>
-                    <br/>
-                    <h3 style="font-size: 1.1rem; color: var(--primary-color); margin-bottom: 10px;">신청자 정보</h3>
+                    
+                    <div class="section-divider">신청자 정보</div>
                     <div class="input-grid">
                         <div class="input-group">
                             <label for="applicantName">성함</label>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="input-group">
                             <label for="applicantEmail">이메일</label>
-                            <input type="email" id="applicantEmail" name="applicantEmail" placeholder="예: email@domain.com" required>
+                            <input type="email" id="applicantEmail" name="applicantEmail" placeholder="예: email@kpc.or.kr" required>
                         </div>
                         <div class="input-group full-width">
                             <label for="applicantPhone">전화번호</label>
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     
-                    <h3 style="font-size: 1.1rem; color: var(--primary-color); margin-top: 20px; margin-bottom: 10px;">교육대상 정보</h3>
+                    <div class="section-divider">교육대상 정보</div>
                     <div class="input-grid">
                         <div class="input-group">
                             <label for="companyName">회사명</label>
@@ -95,7 +95,7 @@
                     <p class="subtitle">생산성본부 공개교육 중 유사한 교육을 기재하셔도 좋습니다.</p>
                     <div class="input-group full-width">
                         <label for="trainingPurpose">향상시키고자 하는 능력, 역량 혹은 교육 목적</label>
-                        <textarea id="trainingPurpose" name="trainingPurpose" rows="4" placeholder="어떤 역량을 향상시키고 싶으신가요?" required></textarea>
+                        <textarea id="trainingPurpose" name="trainingPurpose" rows="5" placeholder="어떤 역량을 향상시키고 싶으신가요?" required></textarea>
                     </div>
                 </div>
 
@@ -127,9 +127,9 @@
                         <div class="input-group full-width">
                             <label>희망 교육 형태 (선택)</label>
                             <div class="radio-group">
-                                <label class="radio-card"><input type="radio" name="trainingType" value="대면 교육" checked> 🤝 대면</label>
-                                <label class="radio-card"><input type="radio" name="trainingType" value="비대면 교육"> 💻 비대면</label>
-                                <label class="radio-card"><input type="radio" name="trainingType" value="혼합(블렌디드)"> 📊 혼합 형태</label>
+                                <label class="radio-card"><input type="radio" name="trainingType" value="대면 교육" checked> 대면</label>
+                                <label class="radio-card"><input type="radio" name="trainingType" value="비대면 교육"> 비대면</label>
+                                <label class="radio-card"><input type="radio" name="trainingType" value="혼합(블렌디드)"> 혼합 형태</label>
                             </div>
                         </div>
                     </div>
@@ -140,14 +140,14 @@
                     <h2>5. 유사 교육 진행 여부</h2>
                     <div class="input-group full-width">
                         <label>과거 유사 교육 진행 경험</label>
-                        <div class="radio-group">
-                            <label class="radio-card"><input type="radio" name="pastExperience" value="Y" onclick="document.getElementById('pastExpDetails').style.display='block'"> 있음 (Y)</label>
+                        <div class="radio-group" style="margin-bottom: 20px;">
+                            <label class="radio-card"><input type="radio" name="pastExperience" value="Y" onclick="document.getElementById('pastExpDetails').style.display='flex'"> 있음 (Y)</label>
                             <label class="radio-card"><input type="radio" name="pastExperience" value="N" onclick="document.getElementById('pastExpDetails').style.display='none'" checked> 없음 (N)</label>
                         </div>
                     </div>
-                    <div class="input-group full-width" id="pastExpDetails" style="display:none; margin-top:20px;">
+                    <div class="input-group full-width" id="pastExpDetails" style="display:none;">
                         <label for="pastExperienceDetails">진행하셨던 교육 이력 (상세 시 기재)</label>
-                        <textarea id="pastExperienceDetails" name="pastExperienceDetails" rows="3" placeholder="어떤 교육을 진행하셨는지 간단히 남겨주세요."></textarea>
+                        <textarea id="pastExperienceDetails" name="pastExperienceDetails" rows="4" placeholder="어떤 교육을 진행하셨는지 간단히 남겨주세요."></textarea>
                     </div>
                 </div>
 
